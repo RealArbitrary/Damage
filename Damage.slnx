@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="DamageAPI/DamageAPI.csproj" />
+  <Project Path="Models/Models.csproj" Id="fec96794-c4eb-423a-9657-0fcb3a8f132b" />
+  <Project Path="PlayGround/DamageConsoleApp.csproj" />
+</Solution>

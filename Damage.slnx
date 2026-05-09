@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="Readme.md" />
+  </Folder>
   <Project Path="API/DamageAPI.csproj" />
   <Project Path="ConsoleApp/DamageConsoleApp.csproj" />
   <Project Path="Models/Models.csproj" Id="fec96794-c4eb-423a-9657-0fcb3a8f132b" />

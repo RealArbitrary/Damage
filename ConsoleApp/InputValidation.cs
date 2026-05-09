@@ -2,7 +2,7 @@
 {
     internal static class InputValidation
     {
-        public static int ValidateInput(string? input)
+        public static int ValidateWarriorIdInput(string? input)
         {
             if (string.IsNullOrWhiteSpace(input))
             {
@@ -23,6 +23,25 @@
             }
 
             return warriorId;
+        }
+        public static int ValidateDamageInput(string? input)
+        {
+            if (string.IsNullOrWhiteSpace(input))
+            {
+                Console.WriteLine("Invalid input: Input cannot be empty.");
+                return 0;
+            }
+            if (!int.TryParse(input, out int damage))
+            {
+                Console.WriteLine($"Invalid input: {input}. Enter a valid number from 1 - 100");
+                return 0;
+            }
+            if (damage < 1 || damage > 100)
+            {
+                Console.WriteLine("Invalid input: Damage must be between 1 and 100.");
+                return 0;
+            }
+            return damage;
         }
     }
 }

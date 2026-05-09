@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using DamageAPI.Data;
-using Microsoft.EntityFrameworkCore;
 using Models;
 
 namespace DamageAPI.Controllers
@@ -20,18 +19,6 @@ namespace DamageAPI.Controllers
             }
 
             return warrior;
-        }
-
-        [HttpGet("all")]
-        public async Task<ActionResult<Warrior>> GetAllWarriors()
-        {
-            var allWarriors = await _warriorDbContext.Warriors.ToListAsync();
-            if (allWarriors is null)
-            {
-                return StatusCode(StatusCodes.Status404NotFound, $"No warriors found");
-            }
-
-            return Ok(allWarriors);
         }
     }
 }

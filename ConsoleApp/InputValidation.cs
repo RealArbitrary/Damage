@@ -43,5 +43,29 @@
             }
             return damage;
         }
+        public static int ValidateMenuOptionInput(string? input)
+        {
+            if (string.IsNullOrWhiteSpace(input))
+            {
+                Console.WriteLine("Invalid input: Input cannot be empty.");
+                return 0;
+            }
+            if (!int.TryParse(input, out int option))
+            {
+                Console.WriteLine($"Invalid input: {input}. Enter a valid number from the menu options");
+                return 0;
+            }
+            if (option == 99)
+            {
+                Console.WriteLine("Exiting appliction...");
+                return option;
+            }
+            if (option < 1 || option > 3)
+            {
+                Console.WriteLine("Invalid input: Option must be one of the menu options");
+                return 0;
+            }
+            return option;
+        }
     }
 }

@@ -1,6 +1,11 @@
-@DamageAPI_HostAddress = http://localhost:5250
+@DamageAPI_HostAddress = https://localhost:7206
 
-GET {{DamageAPI_HostAddress}}/weatherforecast/
-Accept: application/json
+POST {{DamageAPI_HostAddress}}/add-warrior
+Content-Type: application/json
+
+{
+  name: "Warrior1",
+  health: 100
+}
 
 ###

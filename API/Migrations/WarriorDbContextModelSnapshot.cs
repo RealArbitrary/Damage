@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DamageAPI.Migrations
 {
-    [DbContext(typeof(WarriorDbContext))]
+    [DbContext(typeof(WarriorContext))]
     partial class WarriorDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

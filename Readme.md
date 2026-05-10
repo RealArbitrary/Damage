@@ -1,6 +1,6 @@
 # Damage App
 
-A multi-project .NET solution simulating a warrior combat system. Built as a learning project covering REST APIs, Entity Framework Core, shared class libraries, and console-based client interaction.
+A multi-project .NET solution simulating a warrior combat system. Built as a learning project covering REST APIs, Entity Framework Core, a shared class library, and a console-based client.
 
 ## Solution Structure
 
@@ -19,28 +19,30 @@ ASP.NET Core Web API backed by Entity Framework Core and MS SQL Server.
 **Endpoints:**
 | Method | Route | Description |
 |--------|-------|-------------|
-| GET | `/{id}` | Get a warrior by ID |
-| PUT | `/{warriorId}/{damage}` | Apply damage to a warrior |
+| POST | `api/warrior/add` | Create a new warrior |
+| GET  | `api/warrior/{id}` | Get a warrior by ID |
+| PUT  | `api/damage/{warriorId}/{damage}` | Apply damage to a warrior |
+| DELETE | `api/warrior/{id}` | Delete a warrior |
 
 ### DamageConsoleApp
-A console client that interacts with the API. Handles user input validation and displays warrior details retrieved from the API.
+A console client that interacts with the API. It displays a simple menu for creating, spawning, damaging, and deleting warriors and uses HttpClient to call the API.
 
 ### Models
 A shared class library referenced by both projects, containing the `Warrior` model to ensure consistency across the solution.
 
 ## Tech Stack
 
-- **C#** / **.NET**
-- **ASP.NET Core** Web API
-- **Entity Framework Core** with MS SQL Server
-- **HttpClient** for API consumption
+- C# / .NET 10
+- ASP.NET Core Web API
+- Entity Framework Core with MS SQL Server
+- HttpClient for API consumption
 
 ## Getting Started
 
 ### Prerequisites
-- .NET 8 SDK
+- .NET 10 SDK
 - MS SQL Server
-- Visual Studio 2022 or later
+- Visual Studio 2022 or later (Visual Studio 2026 is also supported)
 
 ### Setup
 
@@ -64,8 +66,10 @@ dotnet ef database update
 
 4. Run the API project first, then the console app.
 
+## Notes
+- Create and delete warrior endpoints have been implemented in the API (POST `api/warrior/add`, DELETE `api/warrior/{id}`).
+
 ## Planned
-- Create and delete warrior endpoints
 - Web frontend with HTMX
 - Azure hosting
 - Authentication

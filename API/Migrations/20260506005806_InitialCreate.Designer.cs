@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DamageAPI.Migrations
 {
-    [DbContext(typeof(WarriorDbContext))]
+    [DbContext(typeof(WarriorContext))]
     [Migration("20260506005806_InitialCreate")]
     partial class InitialCreate
     {

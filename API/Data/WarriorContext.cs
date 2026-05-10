@@ -3,7 +3,7 @@ using Models;
 
 namespace DamageAPI.Data
 {
-    public class WarriorDbContext(DbContextOptions<WarriorDbContext> options) : DbContext(options)
+    public class WarriorContext(DbContextOptions<WarriorContext> options) : DbContext(options)
     {
         public DbSet<Warrior> Warriors { get; set; }
     }

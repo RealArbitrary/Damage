@@ -3,7 +3,7 @@
     public class Warrior
     {
         public int Id { get; set; }
-        public string Name { get; set; } = string.Empty;
+        public string? Name { get; set; }
         public int Health { get; set; }
     }
 }

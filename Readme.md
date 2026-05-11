@@ -1,15 +1,14 @@
 # Damage App
 
-A multi-project .NET solution simulating a warrior combat system. Built as a learning project covering REST APIs, Entity Framework Core, a shared class library, and a console-based client.
+A multi-project .NET solution simulating a warrior combat system. Built as a learning project covering REST APIs, Entity Framework Core, a shared class library, and a React frontend.
 
 ## Solution Structure
 
-```
 Damage/
 ├── DamageAPI/          # ASP.NET Core Web API
 ├── DamageConsoleApp/   # Console client
+├── damageui/           # React + Vite frontend
 └── Models/             # Shared class library (Warrior model)
-```
 
 ## Projects
 
@@ -24,25 +23,30 @@ ASP.NET Core Web API backed by Entity Framework Core and MS SQL Server.
 | PUT  | `api/damage/{warriorId}/{damage}` | Apply damage to a warrior |
 | DELETE | `api/warrior/{id}` | Delete a warrior |
 
+### damageui
+React + Vite frontend for interacting with the API. Supports spawning, creating, damaging, and deleting warriors.
+
 ### DamageConsoleApp
-A console client that interacts with the API. It displays a simple menu for creating, spawning, damaging, and deleting warriors and uses HttpClient to call the API.
+A console client that interacts with the API via HttpClient.
 
 ### Models
-A shared class library referenced by both projects, containing the `Warrior` model to ensure consistency across the solution.
+Shared class library referenced by both API and console app, containing the `Warrior` model.
 
 ## Tech Stack
 
 - C# / .NET 10
 - ASP.NET Core Web API
 - Entity Framework Core with MS SQL Server
-- HttpClient for API consumption
+- React + Vite
+- GitHub Actions (self-hosted runner) for CI/CD
 
 ## Getting Started
 
 ### Prerequisites
 - .NET 10 SDK
 - MS SQL Server
-- Visual Studio 2022 or later (Visual Studio 2026 is also supported)
+- Node.js
+- Visual Studio 2022 or later
 
 ### Setup
 
@@ -51,10 +55,14 @@ A shared class library referenced by both projects, containing the `Warrior` mod
 git clone https://github.com/RealArbitrary/Damage.git
 ```
 
-2. Update the connection string in `DamageAPI/appsettings.json`:
+2. Configure appsettings:
+- `appsettings.Development.json` for local dev
+- `appsettings.Production.json` for the server
+
+Both use:
 ```json
 "ConnectionStrings": {
-    "DefaultConnection": "your-connection-string-here"
+    "DamageAPI": "Server=localhost;Database=DamageAPI;Trusted_Connection=True;TrustServerCertificate=True;"
 }
 ```
 
@@ -64,12 +72,22 @@ cd DamageAPI
 dotnet ef database update
 ```
 
-4. Run the API project first, then the console app.
+4. Run the API:
+```bash
+dotnet run --launch-profile http
+```
 
-## Notes
-- Create and delete warrior endpoints have been implemented in the API (POST `api/warrior/add`, DELETE `api/warrior/{id}`).
+5. Build and serve the frontend:
+```bash
+cd damageui
+npm install
+npm run build
+npx serve dist
+```
 
-## Planned
-- Web frontend with HTMX
-- Azure hosting
-- Authentication
+## Deployment
+
+The app is self-hosted on a local Windows machine using:
+- **NSSM** to run the API and React app as Windows services
+- **GitHub Actions** with a self-hosted runner on the server
+- Merging to `master` automatically pulls, rebuilds, and restarts both services

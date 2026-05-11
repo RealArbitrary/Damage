@@ -10,6 +10,9 @@ jobs:
     runs-on: self-hosted
 
     steps:
+      - name: Fix git safe directory
+        run: git config --global --add safe.directory C:/Users/dewet/OneDrive/Documents/repos/Damage
+
       - name: Pull latest code
         run: git -C C:\Users\dewet\OneDrive\Documents\repos\Damage pull origin master
 

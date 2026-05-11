@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Pull latest code
-        run: git pull origin main
+        run: git -C C:\Users\dewet\OneDrive\Documents\repos\Damage pull origin master
 
       - name: Restart API service
         run: |

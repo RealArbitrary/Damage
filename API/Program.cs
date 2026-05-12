@@ -4,6 +4,17 @@ using Microsoft.OpenApi;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowReactApp", policy =>
+    {
+        policy
+            .AllowAnyOrigin()
+            .AllowAnyHeader()
+          .AllowAnyMethod();
+    });
+});
+
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
@@ -11,13 +22,12 @@ builder.Services.AddOpenApi();
 builder.Services.AddDbContext<WarriorContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DamageAPI")));
 
-
 builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new OpenApiInfo
     {
         Version = "v1",
-        Title = "ToDo API",
+        Title = "Damage API",
         Description = "An ASP.NET Core Web API for managing Damage done to warriors",
         TermsOfService = new Uri("https://example.com/terms"),
         Contact = new OpenApiContact
@@ -47,6 +57,8 @@ if (app.Environment.IsDevelopment())
 {
 
 }
+
+app.UseCors("AllowReactApp");
 
 app.UseHttpsRedirection();
 

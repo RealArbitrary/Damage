@@ -1,59 +1,34 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
+import swords from './assets/swords.svg'
 import './App.css'
+import DamageButton from './components/DamageButton'
+import { useState } from 'react';
 
 function App() {
-    const [count, setCount] = useState(0)
+    const [warriorId, setWarriorId] = useState();
+    const [warrior, setWarrior] = useState(null);
 
     return (
-        <>
-            <section id="center">
-                <div className="hero">
-                    <img src={heroImg} className="base" width="170" height="179" alt="" />
-                    <img src={reactLogo} className="framework" alt="React logo" />
-                    <img src={viteLogo} className="vite" alt="Vite logo" />
-                </div>
-                <div>
-                    <h1>Get started</h1>
-                    <p>
-                        Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-                    </p>
-                </div>
-                <button
-                    type="button"
-                    className="counter"
-                    onClick={() => setCount((count) => count + 1)}
-                >
-                    Count is {count}
-                </button>
-
-            </section>
-
-            <div className="ticks"></div>
-
-            <section id="next-steps">
+        <div>
+            <img src={swords} id="swords" />
+            <section id="warriorActions">
                 <div id="docs">
                     <h3>Spawn a Warrior</h3>
                     <div>
                         <span className="label">WarriorId: </span>
-                        <input type="number" />
+                        <input type="number" id="warriorId" onChange={e => setWarriorId(parseInt(e.target.value))} />
 
                     </div>
                     <div>
                         <span className="label">Name: </span>
-                        <input type="text" readOnly />
+                        <input type="text" readOnly value={warrior?.name ?? ""} />
                     </div>
                     <div>
                         <span className="label">Health: </span>
-                        <input type="number" readOnly />
+                        <input type="number" readOnly value={warrior?.health ?? ""} />
 
                     </div>
                     <div>
-                        <button>
-                            Spawn!
-                        </button>
+                        <DamageButton id={warriorId} onWarriorLoaded={setWarrior} />
                     </div>
                 </div>
                 <div id="docs">
@@ -92,8 +67,6 @@ function App() {
                     </div>
                 </div>
 
-
-
                 <div id="docs">
                     <h3>Delete a warrior</h3>
                     <div>
@@ -111,9 +84,7 @@ function App() {
                     </div>
                 </div>
             </section>
-            <div className="ticks"></div>
-            <section id="spacer"></section>
-        </>
+        </div>
     )
 }
 

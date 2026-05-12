@@ -2,14 +2,6 @@
 
 A multi-project .NET solution simulating a warrior combat system. Built as a learning project covering REST APIs, Entity Framework Core, a shared class library, and a React frontend.
 
-## Solution Structure
-
-Damage/
-├── DamageAPI/          # ASP.NET Core Web API
-├── DamageConsoleApp/   # Console client
-├── damageui/           # React + Vite frontend
-└── Models/             # Shared class library (Warrior model)
-
 ## Projects
 
 ### DamageAPI

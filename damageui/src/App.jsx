@@ -1,16 +1,10 @@
 import "./App.css";
-import swords from "./assets/swords.svg";
-import Warrior from "./components/warrior/Warrior";
+import WarriorList from "./components/WarriorList";
 
 function App() {
   return (
     <div>
-      <img src={swords} id="swords" />
-      <section id="warriorActions">
-        <div>
-          <Warrior actions={["Create", "Read", "Update", "Delete"]} />
-        </div>
-      </section>
+      <WarriorList />
     </div>
   );
 }
